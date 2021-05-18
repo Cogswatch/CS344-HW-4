@@ -155,8 +155,9 @@ void *get_output_t(void *args) {
   while(strncmp(item, "STOP\n", 4)) {
     item = get_buff_3();
 
-    if(strncmp(item, "STOP", 4))
+    if(strncmp(item, "STOP", 4) == 0) {
       break;
+    }
 
     // moving 0 index;
     int i = 0;
