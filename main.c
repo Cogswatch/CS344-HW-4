@@ -103,7 +103,9 @@ void *get_input(void *args) {
   char* item = malloc(1000*sizeof(char));
   while(strncmp(item, "STOP\n", 4)) {
     printf("Input: ");
-    scanf("%999[^\n]%*1[\n]s\n", item);
+    // scanf("%999[^\n]%*1[\n]s\n", item);
+    size_t n = 1000*sizeof(char);
+    getline(&item, &n, stdin);
     fflush(stdin);
     put_buff_1(item);
   }
