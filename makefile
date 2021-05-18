@@ -1,2 +1,2 @@
 main: main.c
-	gcc --std=gnu99 -o line_processor main.c -I.
+	gcc --std=gnu99 --pthread -o line_processor main.c -I.
