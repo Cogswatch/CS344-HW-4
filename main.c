@@ -103,7 +103,6 @@ void *get_input(void *args) {
   char* item = malloc(1000*sizeof(char));
   while(strncmp(item, "STOP\n", 4)) {
     printf("Input: ");
-    // scanf("%999[^\n]%*1[\n]s\n", item);
     size_t n = 1000*sizeof(char);
     getline(&item, &n, stdin);
     fflush(stdin);
@@ -120,7 +119,6 @@ void *get_line_separator_t(void *args) {
     for(int i = 0; i < strlen(item); i++) {
       if(item[i] == '\n') {
         item[i] = '-';
-	printf("Newline found!");
       }
     }
 
@@ -150,14 +148,26 @@ void *get_plus_sign_t(void *args) {
   return NULL;
 }
 
-char lineBuffer[1000];
-char outputBuffer[80];
+char lineBuffer[1000] = "";
+char outputBuffer[80] = "";
 
 void *get_output_t(void *args) {
   char* item = malloc(1000*sizeof(char));
   while(strncmp(item, "STOP\n", 4)) {
     item = get_buff_3();
-    printf("\nOutput: %s\n", item);
+
+    // moving 0 index;
+    int i = 0;
+
+    while(strlen(&item[i])) {
+      int j = 80-strlen(outputBuffer);
+      strncat(outputBuffer, &item[i], (80-strlen(outputBuffer)));
+      i += j;
+      if(strlen(outputBuffer) >= 80) {
+        printf("%s\n", outputBuffer);
+        strcpy(outputBuffer, "");
+      }
+    }
   }
   return NULL;
 }
