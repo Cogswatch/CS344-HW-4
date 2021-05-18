@@ -101,7 +101,7 @@ BUFFER(3, char*)
 
 void *get_input(void *args) {
   char* item = malloc(1000*sizeof(char));
-  while(strncmp(item, "STOP\n", 5)) {
+  while(strncmp(item, "STOP\n", 4)) {
     size_t n = 1000*sizeof(char);
     getline(&item, &n, stdin);
     fflush(stdin);
@@ -112,7 +112,7 @@ void *get_input(void *args) {
 
 void *get_line_separator_t(void *args) {
   char* item = malloc(1000*sizeof(char));
-  while(strncmp(item, "STOP\n", 5)) {
+  while(strncmp(item, "STOP\n", 4)) {
     item = get_buff_1();
 
     for(int i = 0; i < strlen(item); i++) {
@@ -128,7 +128,7 @@ void *get_line_separator_t(void *args) {
 
 void *get_plus_sign_t(void *args) {
   char* item = malloc(1000*sizeof(char));
-  while(strncmp(item, "STOP\n", 5)) {
+  while(strncmp(item, "STOP\n", 4)) {
     item = get_buff_2();
 
     for(int i = 0; i < strlen(item); i++) {
@@ -152,7 +152,7 @@ char outputBuffer[80] = "";
 
 void *get_output_t(void *args) {
   char* item = malloc(1000*sizeof(char));
-  while(strncmp(item, "STOP\n", 5)) {
+  while(strncmp(item, "STOP\n", 4)) {
     item = get_buff_3();
 
     // moving 0 index;
